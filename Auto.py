@@ -1,9 +1,10 @@
 from Circle import Circle
-from Lab_05.Figure import Figure
+from Lab_06.Figure import Figure
 from Quadrate import Quadrate
 from Triangle import Triangle
 from Trapezoid import Trapezoid
 from Rectangle import Rectangle
+from turtle import *
 
 
 class Car:
