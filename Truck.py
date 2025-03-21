@@ -9,10 +9,10 @@ from Trapezoid import Trapezoid
 from Rectangle import Rectangle
 
 class Truck(Auto):
-    def init(self, cargo_weight,fuel_c, km, fuel, *parts):
+    def __init__(self, cargo_weight,fuel_c, km, fuel, *parts):
         self._cargo_weight = cargo_weight
 
-        super().init(fuel_c, km, fuel, *parts)
+        super().__init__(fuel_c, km, fuel, *parts)
 
 
 
