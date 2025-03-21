@@ -82,7 +82,7 @@ if __name__ == '__main__':
     window1 = Quadrate(x + 60, y + 40, 30, 'lightblue')
     window2 = Quadrate(x + 120, y + 40, 30, 'lightblue')
 
-    bmw = Auto(1, 2000, 10000, body, roof, wheel1, wheel2, wheel1part, wheel2part, window1, window2)
+    bmw = Auto(1, 2000, 10, body, roof, wheel1, wheel2, wheel1part, wheel2part, window1, window2)
 
     tracer(0, 0)
 
