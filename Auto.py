@@ -8,8 +8,11 @@ from turtle import *
 
 
 class Auto:
-    def __init__(self, *parts):
+    def __init__(self, *parts, fuel_c, km, fuel):
         self.parts: list[Figure] = list(parts)
+        self._fuel_consumption = fuel_c
+        self._km = km
+        self._fuel = fuel
 
     def show(self):
         for part in self.parts:
@@ -22,6 +25,22 @@ class Auto:
     def move(self, dx, dy):
         for part in self.parts:
             part.move(dx, dy)
+
+    def calculate_fuel(self):
+        pass
+
+    def ShowFuel(self):
+        pass
+
+    def AddFuel(self):
+        pass
+
+    def PrintData(self):
+        pass
+
+    def Go(self):
+        pass
+
 
 
 if __name__ == '__main__':
