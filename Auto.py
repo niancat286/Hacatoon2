@@ -8,12 +8,11 @@ from turtle import *
 
 
 class Auto:
-    def __init__(self, *parts, fuel_c, km, fuel):
-        self.parts: list[Figure] = list(parts)
+    def __init__(self, fuel_c, km, fuel, *parts):
         self._fuel_consumption = fuel_c
         self._km = km
         self._fuel = fuel
-
+        self.parts: list[Figure] = list(parts)
 
     def show(self):
         for part in self.parts:
@@ -27,27 +26,30 @@ class Auto:
         for part in self.parts:
             part.move(dx, dy)
 
-    def calculate_fuel(self, dist):
+    def calculate_fuel(self):
         i = 1
-        if dist >= 1000:
-            i = 1 + (dist // 1000) * 0.01
+        if self._km >= 1000:
+            i = 1 + (self._km // 1000) * 0.01
         self._fuel_consumption = self._fuel_consumption * i
-
-
+        return self._fuel_consumption
 
     def ShowFuel(self):
-        pass
+        self.calculate_fuel()
+        self._fuel = self._fuel - self._fuel_consumption * self._km
+        return self._fuel
 
-    def AddFuel(self):
-        pass
+    def AddFuel(self, litrs):
+        self._fuel = self._fuel + litrs
+        return self._fuel
 
     def PrintData(self):
-        pass
+        print(f'fuel {self._fuel}, fuel_consumption {self._fuel_consumption}, km {self._km}')
 
-    def Go(self, dx, dy = 0):
-        for part in self.parts:
-            part.move(dx, dy)
-            dist = dx
+    def Go(self):
+        for _ in range(self._km):
+            for part in self.parts:
+                part.move(1, 0)
+                update()
 
 
 
@@ -63,12 +65,14 @@ if __name__ == '__main__':
     wheel2part = Triangle(x + 160, y - 30, 10, 'magenta')
     window1 = Quadrate(x + 60, y + 40, 30, 'lightblue')
     window2 = Quadrate(x + 120, y + 40, 30, 'lightblue')
-    bmw = Auto(body, roof, wheel1, wheel2, wheel1part, wheel2part, window2, window1)
+
+    bmw = Auto(1, 30, 30, body, roof, wheel1, wheel2, wheel1part, wheel2part, window1, window2)
 
     tracer(0, 0)
 
     bmw.show()
-    for _ in range(100):
-        bmw.move(1, 0)
-        update()
+    bmw.Go()
+
+
+    bmw.PrintData()
     mainloop()
