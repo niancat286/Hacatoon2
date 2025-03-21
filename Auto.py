@@ -1,5 +1,5 @@
 from Circle import Circle
-from Lab_06.Figure import Figure
+from Figure import Figure
 from Quadrate import Quadrate
 from Triangle import Triangle
 from Trapezoid import Trapezoid
@@ -14,6 +14,7 @@ class Auto:
         self._km = km
         self._fuel = fuel
 
+
     def show(self):
         for part in self.parts:
             part.show()
@@ -26,8 +27,13 @@ class Auto:
         for part in self.parts:
             part.move(dx, dy)
 
-    def calculate_fuel(self):
-        pass
+    def calculate_fuel(self, dist):
+        i = 1
+        if dist >= 1000:
+            i = 1 + (dist // 1000) * 0.01
+        self._fuel_consumption = self._fuel_consumption * i
+
+
 
     def ShowFuel(self):
         pass
@@ -38,8 +44,10 @@ class Auto:
     def PrintData(self):
         pass
 
-    def Go(self):
-        pass
+    def Go(self, dx, dy = 0):
+        for part in self.parts:
+            part.move(dx, dy)
+            dist = dx
 
 
 
