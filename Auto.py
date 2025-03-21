@@ -46,10 +46,26 @@ class Auto:
         print(f'fuel {self._fuel}, fuel_consumption {self._fuel_consumption}, km {self._km}')
 
     def Go(self):
-        for _ in range(self._km):
-            for part in self.parts:
-                part.move(1, 0)
-                update()
+        #for _ in range(self._km):
+            #for part in self.parts:
+                #part.move(1, 0)
+                #update()
+        self.calculate_fuel()
+        if self._fuel < self._fuel_consumption * (self._km / 100):
+            print('Not enough fuel. Add? Y/N')
+            res = input()
+            if res == 'Y':
+                print('How much? In litres')
+                f = int(input())
+                self.AddFuel(f)
+                self.Go()
+            elif res == 'N':
+                print("you can't go")
+        else:
+            print('you can go')
+
+
+
 
 
 
@@ -66,13 +82,11 @@ if __name__ == '__main__':
     window1 = Quadrate(x + 60, y + 40, 30, 'lightblue')
     window2 = Quadrate(x + 120, y + 40, 30, 'lightblue')
 
-    bmw = Auto(1, 30, 30, body, roof, wheel1, wheel2, wheel1part, wheel2part, window1, window2)
+    bmw = Auto(1, 2000, 10000, body, roof, wheel1, wheel2, wheel1part, wheel2part, window1, window2)
 
     tracer(0, 0)
 
     bmw.show()
     bmw.Go()
-
-
     bmw.PrintData()
     mainloop()
