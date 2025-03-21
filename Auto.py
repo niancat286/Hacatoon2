@@ -7,7 +7,7 @@ from Rectangle import Rectangle
 from turtle import *
 
 
-class Car:
+class Auto:
     def __init__(self, *parts):
         self.parts: list[Figure] = list(parts)
 
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     wheel2part = Triangle(x + 160, y - 30, 10, 'magenta')
     window1 = Quadrate(x + 60, y + 40, 30, 'lightblue')
     window2 = Quadrate(x + 120, y + 40, 30, 'lightblue')
-    bmw = Car(body, roof, wheel1, wheel2, wheel1part, wheel2part, window2, window1)
+    bmw = Auto(body, roof, wheel1, wheel2, wheel1part, wheel2part, window2, window1)
 
     tracer(0, 0)
 
